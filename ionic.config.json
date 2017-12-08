@@ -1,0 +1,8 @@
+{
+  "name": "akakom2",
+  "app_id": "cdb43964",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

@@ -1,0 +1,74 @@
+<!--
+  Generated template for the ContactPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CONTACT US</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <h1 id="cONTACTUS-heading6" style="color:#000000;">
+    Contact Us
+  </h1>
+  <p>Anda dapat menghubungi kami di alamat:</p>
+  <p>STMIK AKAKOM Yogyakarta</p>
+  <p>Jl. Raya Janti Karang Jambe No. 143 Yogyakarta 55198 Indonesia</p>
+  <p>Telepon : <a href="tel:+62274486664" target="_system">+62 274 486664</a></p>
+  <p>Email : <a href="mailto:info@akakom.ac.id" target="_system">info@akakom.ac.id</a></p>
+  <br />
+  <form id="cONTACTUS-form1">
+    <ion-item id="cONTACTUS-input2">
+      <ion-label>
+        NAMA
+      </ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="cONTACTUS-input3">
+      <ion-label>
+        ALAMAT
+      </ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="cONTACTUS-input4">
+      <ion-label>
+        NO HANDPHONE
+      </ion-label>
+      <ion-input type="tel" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="cONTACTUS-input5">
+      <ion-label>
+        EMAIL
+      </ion-label>
+      <ion-input type="email" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="cONTACTUS-select1">
+      <ion-label>
+        JENIS KELAMIN
+      </ion-label>
+      <ion-select name="JENIS KELAMIN">
+        <ion-option>
+          LAKI-LAKI
+        </ion-option>
+        <ion-option>
+          PEREMPUAN
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item id="cONTACTUS-textarea1">
+      <ion-label>
+        PESAN
+      </ion-label>
+      <ion-textarea placeholder=""></ion-textarea>
+    </ion-item>
+  </form>
+  <button ion-button full (click)="doAlert()">
+    KIRIM
+  </button>
+</ion-content>
