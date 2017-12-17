@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Berita Kampus</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let neww of news" (click)="selectNews($event, neww)" >
+    <img src="http://akakom.tk/assets/uploads/blog_posts/{{neww.image_url}}"/>
+    <ion-card-content>
+      <h2>{{neww.title}}</h2>
+      <p [innerHtml]="neww.content_brief"></p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

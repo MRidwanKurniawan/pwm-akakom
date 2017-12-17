@@ -1,12 +1,8 @@
-//import { Tab1Page } from './../tab1/tab1';
-//import { Tab2Page } from './../tab2/tab2';
-//import { Tab3Page } from './../tab3/tab3';
 import { TabsPage } from './../tabs/tabs';
-//import { SpecialPage } from './../special/special';
-
-//import { HomePage } from '../home/home';
-//import { ListPage } from '../list/list';
-
+import { LokasiPage } from './../lokasi/lokasi';
+import { IonicOfficialComponentsPage } from './../ionic-official-components/ionic-official-components';
+import { IonicNativePage } from './../ionic-native/ionic-native';
+import { NewsPage } from '../news/news';
 
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Nav, NavParams } from 'ionic-angular';
@@ -23,6 +19,7 @@ export interface PageInterface{
   selector: 'page-menu',
   templateUrl: 'menu.html',
 })
+ 
 export class MenuPage {
 	// Basic root for our content view
   rootPage: any = TabsPage;
@@ -36,11 +33,14 @@ export class MenuPage {
     { title: 'ABOUT', pageName: 'TabsPage', tabComponent: 'AboutPage', index: 2, icon: 'contact' },
     { title: 'CONTACT US', pageName: 'TabsPage', tabComponent: 'ContactPage', index:3, icon: 'book' },
      { title: 'GALERY', pageName: 'TabsPage', tabComponent: 'GalleryPage', index:4, icon: 'images' },
+     { title: 'Berita Kampus', pageName: 'NewsPage', tabComponent: NewsPage, icon: 'logo-rss' },
+     { title: 'Lokasi Kampus', pageName: 'LokasiPage', tabComponent: LokasiPage, icon: 'navigate' },
+     { title: 'Ionic Official Components', pageName: 'IonicOfficialComponentsPage', tabComponent: IonicOfficialComponentsPage, icon: 'ionic' },
+     { title: 'Ionic Native', pageName: 'IonicNativePage', tabComponent: IonicNativePage, icon: 'ionic' },
   ];
-
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
   }
@@ -52,7 +52,7 @@ export class MenuPage {
     if (page.index) {
       params = { tabIndex: page.index };
     }
- 
+  
     // The active child nav is our Tabs Navigation
     if (this.nav.getActiveChildNav() && page.index != undefined) {
       this.nav.getActiveChildNav().select(page.index);

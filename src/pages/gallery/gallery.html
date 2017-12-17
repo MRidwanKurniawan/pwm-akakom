@@ -13,15 +13,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-	<ion-grid>
-	    <ion-row>
-			  <ion-col col-6><img src="assets/img/PHyz2GjBRQyUFq6wgiQu_logoatmikakakom.gif" class="ri" /></ion-col>
-			  <ion-col col-6><img src="assets/img/RVRoX1eQbWCYTo95lbnA_laboratoriumterpadu.jpg" class="ri" /></ion-col>
-			  <ion-col col-6><img src="assets/img/bFLuMn2bQ3aFE2pwWNnP_maxresdefault.jpg" class="ri" /></ion-col>
-			  <ion-col col-6><img src="assets/img/19TKu1WsQYOcJ45ar0RW_pesonakakom.jpg" class="ri" /></ion-col>
-			  <ion-col col-6><img src="assets/img/E5OUQHzwQICJ5kb9Vd7V_pika.jpg" class="ri" /></ion-col>
-			  <ion-col col-6><img src="assets/img/6viVgeI4T1SJ9KbfJYIy_jepang.jpg" class="ri" /></ion-col>
-		</ion-row>
-	 </ion-grid>
+<ion-content>
+  <ion-slides class="image-slider" loop="true" slidesPerView="2">
+    <ion-slide *ngFor="let img of images">
+      <img src="assets/img/{{img}}" class="thumb-img" imageViewer/>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

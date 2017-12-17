@@ -3,6 +3,7 @@ import { ProgramStudiPage } from './../program-studi/program-studi';
 import { HomePage } from './../home/home';
 import { ContactPage } from './../contact/contact';
 import { GalleryPage } from './../gallery/gallery';
+//import { LokasiPage } from './../lokasi/lokasi';
 
 
 import { Component } from '@angular/core';

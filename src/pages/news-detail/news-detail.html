@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{neww.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-card>
+        <img src="http://akakom.tk/assets/uploads/blog_posts/{{neww.image_url}}">
+        <p class="news-head" center>{{neww.title}}</p>
+        <p class="news-time">{{neww.publish_time | date:"yMMMMd" }}</p>
+        <ion-card-content>
+            <p [innerHtml]="neww.content"> </p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

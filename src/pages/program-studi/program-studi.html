@@ -1,9 +1,3 @@
-<!--
-  Generated template for the ProgramStudiPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
       <button ion-button menuToggle>
@@ -13,22 +7,10 @@
   </ion-navbar>
 </ion-header>
 
-
-<ion-content padding>
-<ion-list id="programStudi-list1">
-    <ion-item color="none" on-click="goToSI()">
-      SISTEM INFORMASI (S1)
-    </ion-item>
-    <ion-item color="none" on-click="goToTI()">
-      TEKNIK INFORMATIKA (S1)
-    </ion-item>
-    <ion-item color="none" on-click="goToTK()">
-      TEKNIK KOMPUTER (D3)
-    </ion-item>
-    <ion-item color="none" on-click="goToMI()">
-      MANAJEMEN INFORMATIKA (D3)
-    </ion-item>
-    <ion-item color="none" on-click="goToKA()">
-      KOMPUTERISASI AKUNTASI (D3)
-    </ion-item>
-  </ion-list></ion-content>
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      {{item.title}}
+    </button>
+  </ion-list>
+</ion-content>

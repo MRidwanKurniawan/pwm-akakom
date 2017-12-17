@@ -1,29 +1,13 @@
 page-gallery {
-
-}
-img.ri
-{
-    position: relative;
-    max-width: 80%;
-    border-radius: 3px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.9);
-}
-
-img.ri:empty
-{
-    width: auto;
-	margin: auto;
-	display: block;
-}
-
-@media screen and (orientation: portrait) {
-  img.ri {
-      max-width: 90%;
-  }
-}
-
-@media screen and (orientation: landscape) {
-  img.ri {
-      max-height: 90%;
-  }
+  ion-slide.swiper-slide {
+        left: 25%;
+    }
+    
+    .slide-zoom {
+        background: #e6e6e6;
+    }
+ 
+    .thumb-img {
+        padding: 10px;
+    }
 }

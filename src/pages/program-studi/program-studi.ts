@@ -1,47 +1,44 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { Sis1Page } from './../sis1/sis1';
-import { Tis1Page } from './../tis1/tis1';
-import { Tkd3Page } from './../tkd3/tkd3';
-import { Mid3Page } from './../mid3/mid3';
-import { Kad3Page } from './../kad3/kad3';
-/**
- * Generated class for the ProgramStudiPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NavController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-program-studi',
   templateUrl: 'program-studi.html',
 })
 export class ProgramStudiPage {
+  rootPage: any;
+  items: Array<{ title: string, page: any }>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController) {
+    this.rootPage = 'Sis1Page';
+
+    this.items = [
+      {
+        title: 'SISTEM INFORMATIKA (S1)',
+        page: 'Sis1Page'
+      },
+      {
+        title: 'TEKNIK INFORMATIKA (S1)',
+        page: 'Tis1Page'
+      },
+      {
+        title: 'TEKNIK KOMPUTER (D3)',
+        page: 'Tkd3Page'
+      },
+      {
+        title: 'MANAJEMEN INFORMATIKA (D3)',
+        page: 'Mid3Page'
+      },
+      {
+        title: 'KOMPUTERISASI AKUNTANSI (D3)',
+        page: 'Kad3Page'
+      },
+    ];
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProgramStudiPage');
-  }
-  goToSI(params){
-    if (!params) params = {};
-    this.navCtrl.push(Sis1Page);
-  }
-  goToTI(params){
-    if (!params) params = {};
-    this.navCtrl.push(Tis1Page);
-  }
-  goToTK(params){
-    if (!params) params = {};
-    this.navCtrl.push(Tkd3Page);
-  }
-  goToMI(params){
-    if (!params) params = {};
-    this.navCtrl.push(Mid3Page);
-  }
-  goToKA(params){
-    if (!params) params = {};
-    this.navCtrl.push(Kad3Page);
+  
+  itemTapped(event, item) {
+    this.navCtrl.push(item.page);
   }
 }
