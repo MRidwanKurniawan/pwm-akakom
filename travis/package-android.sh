@@ -2,9 +2,9 @@
 
 set -e
 
-if [[ "$TRAVIS_BRANCH" == "develop" ]]
+if [[ "$TRAVIS_BRANCH" == "master" ]]
 then
-    echo "Skipping package Android for develop branch"
+    echo "Skipping package Android for master branch"
     exit
 fi
 

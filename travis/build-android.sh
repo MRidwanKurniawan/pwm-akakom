@@ -5,7 +5,7 @@ set -e
 # Build Ionic App for Android
 cordova platform add android --nofetch
 
-if [[ "$TRAVIS_BRANCH" == "develop" ]]
+if [[ "$TRAVIS_BRANCH" == "master" ]]
 then
     ionic cordova build android
 else

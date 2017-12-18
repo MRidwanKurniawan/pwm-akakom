@@ -2,9 +2,9 @@
 
 set -e
 
-if [[ "$TRAVIS_BRANCH" == "develop" ]]
+if [[ "$TRAVIS_BRANCH" == "master" ]]
 then
-    echo "Skipping package iOS for develop branch"
+    echo "Skipping package iOS for master branch"
     exit
 fi
 
