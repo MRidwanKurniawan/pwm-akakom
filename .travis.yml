@@ -4,69 +4,40 @@ branches:
 matrix:
   include:
   - os: linux
-    sudo: false
     language: android
     android:
       components:
       - tools
       - platform-tools
-      - tools
       - build-tools-26.0.0
       - android-25
-      - extra-google-google_play_services
-      - extra-google-m2repository
-      - extra-android-m2repository
+      licenses:
+      - android-sdk-license-.+
     addons:
       apt:
-        sources:
-        - sourceline: deb https://dl.yarnpkg.com/debian/ stable main
-          key_url: https://dl.yarnpkg.com/debian/pubkey.gpg
         packages:
         - oracle-java8-installer
-        - oracle-java8-set-default
-        - yarn
-        - jq
-    licenses:
-    - android-sdk-preview-license-.+
-    - android-sdk-license-.+
-    - google-gdk-license-.+
-  - os: osx
-    language: objective-c
-    osx_image: xcode8.3
-before_cache:
-- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-- rm -f  $HOME/.gradle/caches/transforms-1/transforms-1.lock
-- rm -rf $HOME/.gradle/caches/3.5/fileHashes/
-- rm -rf $HOME/.gradle/caches/*/plugin-resolution/
-cache:
-  directories:
-  - "$HOME/.gradle/caches/"
-  - "$HOME/.gradle/wrapper/"
-  - "$HOME/Library/Caches/Yarn/v1/"
-  - "$HOME/.cache/yarn/v1/"
+
 before_install:
-- export LANG=en_US.UTF-8
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update ; brew install yarn ios-sim
-  jq ios-deploy cocoapods ; rvm use system ; pod setup ; fi
-- nvm install 8
-- yarn global add ionic cordova
-before_script:
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./travis/addkeys.sh ; fi
-script:
-- yarn install
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./travis/build-ios.sh && ./travis/package-ios.sh
-  ; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./travis/build-android.sh && ./travis/package-android.sh
-  ; fi
-env:
-  global:
-  - JAVA_HOME=/usr/lib/jvm/java-8-oracle
+- rvm install 2.3.1
+- gem install bundler
+- bundle install
+- nvm install v6
+- npm update npm
+- if [ ${TRAVIS_OS_NAME} = "linux" ]; then jdk_switcher use oraclejdk8; fi
+  npm install -g ios-deploy; fi
+install:
+- npm install -g cordova@6.5.0 ionic@6.5.0 typescript@2.5.3
+- npm install
+after_success:
+- if [ ${TRAVIS_PULL_REQUEST} = "false" ] && [ ${TRAVIS_BRANCH} = "master" ] && [ ${TRAVIS_OS_NAME} = "linux" ] && [ ${TRAVIS_TAG} ]; then 
+    bundle exec fastlane android deploy target:prod; 
+  fi
 deploy:
   provider: releases
   api_key:
     secure: MPervNlXGzbxDyith/CiAFd44cwSVGN+ASCrRL2kAzSimo4b9DBKZ09woUzIlk/6/R1R7Z8ZpyjdbGPkyoqarbduujJFL+tL0/2hfjtZ70s7VrmkGpOkxZvHix5X7WYI31gzqBtZpW9Lrnes2wXVuMby7lOTGAaKK00GguwTGhHDdTXOqCwUT9nMGAuARL36mNblTr3JDhKzr1bxBa0okfzVBq7embzq0qMKVKO10WtwWXiaw9UOFGt6pBj18P0w7Kuuq5GaY5Xc17/Mn4oVAJ9Sq6FKgxeITQ0x5X7Ygb6X+IlQkKY8lHe4hW7PTEPyEmHtjADM4ZJf7R6Zk/UCr3+QrXdIUbGxbqKUg6QuVnjKSq0I6QqTEVm3vkUQRLmkO4H/hSCse25FTONjlfZqHmdqu8EsRGaIdNuKLTBtN55Glm2OzT4WUkAuvMiCv7kW+vqvK9vz+P2ZbZH5h+rGgeq0ivr9/nCUTbf/MvddUyw4vNNGuJGMWT9HwW7tH9dT1oYQoQOqLtCEUv5dFi90lZTiLHdsyTfPNOgsOkZkRBHxvNRD+1fupNeCHKPOe1jibSzx6JgEJZgoipAbow5IJFyoJxzEkbr1Wj3zkGszC5v2/SFfinm+h15xvcT9V3I731UqwLmVyIWc+D7UlFzNZJ72wF844kvKMBeeqf4oXOc=
   file_glob: true
-  file: output/*
   skip_cleanup: true
   overwrite: true
   on:
