@@ -21,7 +21,6 @@ matrix:
 before_install:
 - rvm install 2.3.1
 - gem install bundler
-- bundle install
 - nvm install v6
 - npm update npm
 - if [ ${TRAVIS_OS_NAME} = "linux" ]; then jdk_switcher use oraclejdk8; fi
