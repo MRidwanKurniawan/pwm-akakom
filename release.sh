@@ -15,7 +15,7 @@ GIT_MERGE_AUTOEDIT=no git flow release finish -m $VERSION $VERSION
 git push origin HEAD --tags
 
 # Merge release into develop
-git checkout develop
+git checkout master
 git merge master
 
 # Bump version

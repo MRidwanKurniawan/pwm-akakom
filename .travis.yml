@@ -1,7 +1,6 @@
 branches:
   only:
   - master
-  - develop
 matrix:
   include:
   - os: linux
@@ -41,10 +40,10 @@ before_cache:
 - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-  - $HOME/.gradle/caches/
-  - $HOME/.gradle/wrapper/
-  - $HOME/Library/Caches/Yarn/v1/
-  - $HOME/.cache/yarn/v1/
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  - "$HOME/Library/Caches/Yarn/v1/"
+  - "$HOME/.cache/yarn/v1/"
 before_install:
 - export LANG=en_US.UTF-8
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update ; brew install yarn ios-sim
@@ -55,19 +54,21 @@ before_script:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./travis/addkeys.sh ; fi
 script:
 - yarn install
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./travis/build-ios.sh && ./travis/package-ios.sh ; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./travis/build-android.sh && ./travis/package-android.sh ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./travis/build-ios.sh && ./travis/package-ios.sh
+  ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./travis/build-android.sh && ./travis/package-android.sh
+  ; fi
 env:
   global:
   - JAVA_HOME=/usr/lib/jvm/java-8-oracle
 deploy:
   provider: releases
   api_key:
-    secure: 1WU0Csb0tb7rKRbRE6oV6wBdHozMTE+uWkBMD0RSc9ZVzrl4aravifrUZNq5QPjt13eB8ZuMQTi+6882cyEtr68Uhy8LE/85I86AkyOsxQdnPgoB4fLFuow7fc80+lCH+QLc8HU9XH5Jwx/a9f2HxSv5ZGkluaHkMglGLTTIqE0pKDWfowmyrBCajSHIXNlPPYaEhKHKOmJkFUgn3kwYwPbV3CgYAQXoLOctK6TxvKlKL0FTmNPX3+MVUlY0jzAn9DEV9eXQ8bvomRJC4KQxTSh9xJKCba/C0wgUkO/3EECCPIArrdYHKzFjpXP18SIbvuBQvPoGHUcfClFIKP8G0gXYSCyiMAZ4b3a6CpydMb+PW0zGsEqEHL1EZlhn5cbYZzUfXKIYutO5A8h9dDcrCqOhUIzo2ZOy69sN9oSPPJRrvZOUOo+yzZHSutLI6r5ncVislRIQFw1QDN8HCJAfsDqDz2NcL3bJt8vRgHiI/98lKFIqkErrWwggGASIs0npmBVnlaraTUUW+B08MpkTXLdwcj98X8mMbSDThlNFJUymY7+HJ+YwKtdZ/pjfn7zAXaaPLn2v8Vu5M+uwV+KcVxRqLIRU41jB7DxkBA0Tu3sI6FHbaJwt6BB+xlJXw3d2MLeaJqN1+tc2rb6BiTIlRoRS2k1kqdLQlsvuCmSS+5s=
+    secure: MPervNlXGzbxDyith/CiAFd44cwSVGN+ASCrRL2kAzSimo4b9DBKZ09woUzIlk/6/R1R7Z8ZpyjdbGPkyoqarbduujJFL+tL0/2hfjtZ70s7VrmkGpOkxZvHix5X7WYI31gzqBtZpW9Lrnes2wXVuMby7lOTGAaKK00GguwTGhHDdTXOqCwUT9nMGAuARL36mNblTr3JDhKzr1bxBa0okfzVBq7embzq0qMKVKO10WtwWXiaw9UOFGt6pBj18P0w7Kuuq5GaY5Xc17/Mn4oVAJ9Sq6FKgxeITQ0x5X7Ygb6X+IlQkKY8lHe4hW7PTEPyEmHtjADM4ZJf7R6Zk/UCr3+QrXdIUbGxbqKUg6QuVnjKSq0I6QqTEVm3vkUQRLmkO4H/hSCse25FTONjlfZqHmdqu8EsRGaIdNuKLTBtN55Glm2OzT4WUkAuvMiCv7kW+vqvK9vz+P2ZbZH5h+rGgeq0ivr9/nCUTbf/MvddUyw4vNNGuJGMWT9HwW7tH9dT1oYQoQOqLtCEUv5dFi90lZTiLHdsyTfPNOgsOkZkRBHxvNRD+1fupNeCHKPOe1jibSzx6JgEJZgoipAbow5IJFyoJxzEkbr1Wj3zkGszC5v2/SFfinm+h15xvcT9V3I731UqwLmVyIWc+D7UlFzNZJ72wF844kvKMBeeqf4oXOc=
   file_glob: true
   file: output/*
   skip_cleanup: true
   overwrite: true
   on:
+    repo: MRidwanKurniawan/pwm-akakom
     branch: master
-
