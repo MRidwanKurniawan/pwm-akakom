@@ -21,15 +21,15 @@ matrix:
 before_install:
 - rvm install 2.3.1
 - gem install bundler
+- gem install fastlane --no-rdoc --no-ri --no-document --quiet
 - nvm install v6
 - npm update npm
-- if [ ${TRAVIS_OS_NAME} = "linux" ]; then jdk_switcher use oraclejdk8; fi
-  npm install -g ios-deploy; fi
+- jdk_switcher use oraclejdk8; fi
 install:
 - npm install -g cordova@6.5.0 ionic@6.5.0 typescript@2.5.3
 - npm install
 after_success:
-- if [ ${TRAVIS_PULL_REQUEST} = "false" ] && [ ${TRAVIS_BRANCH} = "master" ] && [ ${TRAVIS_OS_NAME} = "linux" ] && [ ${TRAVIS_TAG} ]; then 
+- if [ ${TRAVIS_BRANCH} = "master" ] && [ ${TRAVIS_TAG} ]; then 
     bundle exec fastlane android deploy target:prod; 
   fi
 deploy:
