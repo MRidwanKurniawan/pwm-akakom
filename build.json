@@ -1,0 +1,11 @@
+{
+  "android": {
+    "release": {
+      "keystore": "release.keystore",
+      "storePassword": "4w4ntkb43k",
+      "alias": "alias_name",
+      "password" : "4w4ntkb43k",
+      "keystoreType": ""
+    }
+  }
+}
